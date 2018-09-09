@@ -6,7 +6,7 @@ if (module.hot) {
 }
 
 const MainApp = () => (
-  <h1>Hello React!</h1>
+  <h1>Hello React!!!!!</h1>
 );
 // render the app
 render(<MainApp />, document.getElementById('app'));

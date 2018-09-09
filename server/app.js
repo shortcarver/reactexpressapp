@@ -24,8 +24,8 @@ app.set('view engine', 'pug');
 
 // use parcel bundler
 if (process.env.NODE_ENV !== 'production') {
-  const bundler = new Bundler('./src/index.js', {
-    outDir: 'public/js',
+  const bundler = new Bundler('../react/app.js', {
+    outDir: '../public/js',
     watch: true,
   });
   bundler.bundle();
@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // serve static files from 'public'
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // use routes
 app.use('/', routes);
