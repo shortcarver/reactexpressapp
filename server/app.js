@@ -7,6 +7,7 @@ import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import Bundler from 'parcel-bundler';
 import routes from './routes';
 
 // use dotenv
@@ -20,6 +21,16 @@ const app = express();
 // view engine
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'pug');
+
+// use parcel bundler
+if (process.env.NODE_ENV !== 'production') {
+  const bundler = new Bundler('./src/index.js', {
+    outDir: 'public/js',
+    watch: true,
+  });
+  bundler.bundle();
+  app.use(bundler.middleware());
+}
 
 // logger
 app.use(logger('combined'));
