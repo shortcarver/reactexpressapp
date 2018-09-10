@@ -51,7 +51,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 oauth(app);
 
 // use routes
-//app.use('/', routes);
+app.use('/', routes);
 
 app.get('/secure', authenticate(), (req, res) => {
   res.json({ message: 'secure!' });
