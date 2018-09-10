@@ -9,6 +9,8 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import Bundler from 'parcel-bundler';
 import routes from './routes';
+import oauth from './oauth';
+import authenticate from './oauth/authenticate';
 
 // use dotenv
 // dotenv.config({
@@ -45,8 +47,15 @@ app.use(cookieParser());
 // serve static files from 'public'
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Add Auth
+oauth(app);
+
 // use routes
-app.use('/', routes);
+//app.use('/', routes);
+
+app.get('/secure', authenticate(), (req, res) => {
+  res.json({ message: 'secure!' });
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
