@@ -5,9 +5,9 @@
   "main": "server/index.js",
   "scripts": {
     "start": "babel-node ./server/index.js",
-    "build": "NODE_ENV=production npx parcel build react/app.js -d public/js/ --no-cache",
-    "dev": "nodemon --exec babel-node ./server/index.js -i ./public/",
-    "react-dev": "npx parcel watch react/app.js -d public/js/",
+    "build": "NODE_ENV=production npx parcel build react/app.js -d ./public/js/ --no-cache",
+    "dev": "nodemon --exec babel-node ./server/index.js -i ./public",
+    "react-dev": "npx parcel watch ./react/app.js -d ./public/js/",
     "lint": "eslint . --ext .js,.jsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -40,6 +40,7 @@
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.4.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
