@@ -4,7 +4,7 @@ import actions from '../../redux/actions';
 import LoginComponent from './LoginComponent';
 
 // redux boilerplate
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
   return {
     auth: state.auth,
   };
@@ -14,4 +14,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
