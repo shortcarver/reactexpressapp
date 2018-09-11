@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import styles from './styles.js';
+import styles from './styles';
 
 if (module.hot) {
   module.hot.accept();
@@ -9,8 +9,8 @@ if (module.hot) {
 
 export default class LoginComponent extends Component {
   state = {
-    name: "",
-    password: "",
+    name: '',
+    password: '',
   }
 
   loginOnClick = (args) => {
@@ -22,18 +22,20 @@ export default class LoginComponent extends Component {
   }
 
   nameOnChange = (event) => {
-    const value = event.target.value
-    this.setState(() => ({ name: value }))
+    const { value } = event.target;
+    this.setState(() => ({ name: value }));
   }
 
   passwordOnChange = (event) => {
-    const value = event.target.value
-    this.setState(() => ({ password: value }))
+    const { value } = event.target;
+    this.setState(() => ({ password: value }));
   }
 
   render = () => {
+    const { style = {} } = this.props;
+
     return (
-      <div style={styles.container}>
+      <div style={{ ...styles.container, ...style }}>
         <TextField
           id="name"
           label="Name"
@@ -51,7 +53,7 @@ export default class LoginComponent extends Component {
 
         <div style={styles.buttonContainer}>
           <Button variant="flat" onClick={this.singupOnClick}>Sign Up</Button>
-          <Button variant="raised" onClick={this.loginOnClick} >Login</Button>
+          <Button variant="raised" onClick={this.loginOnClick}>Login</Button>
         </div>
       </div>
     );
