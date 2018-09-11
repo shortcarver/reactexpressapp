@@ -11,7 +11,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actions, dispatch);
+  const boundActions = bindActionCreators(actions, dispatch);
+  return {
+    login: boundActions.getOAuth,
+    signUp: (name, pass) => console.log(name, pass), // TODO hook up signup
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);

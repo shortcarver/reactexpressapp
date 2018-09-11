@@ -26,8 +26,8 @@ app.set('view engine', 'pug');
 
 // use parcel bundler
 if (process.env.NODE_ENV !== 'production') {
-  const bundler = new Bundler('../react/app.js', {
-    outDir: '../public/js',
+  const bundler = new Bundler('./react/app.js', {
+    outDir: './public/js',
     watch: true,
   });
   bundler.bundle();

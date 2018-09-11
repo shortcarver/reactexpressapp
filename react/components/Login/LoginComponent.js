@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import styles from './styles';
@@ -8,6 +9,12 @@ if (module.hot) {
 }
 
 export default class LoginComponent extends Component {
+  static propTypes = {
+    style: PropTypes.object.isRequired,
+    login: PropTypes.func.isRequired,
+    signUp: PropTypes.func.isRequired,
+  }
+
   state = {
     name: '',
     password: '',
@@ -15,10 +22,11 @@ export default class LoginComponent extends Component {
 
   loginOnClick = (args) => {
     console.log(this.state);
+    this.props.login(this.state.name, this.state.password);
   }
 
   singupOnClick = () => {
-
+    this.props.signUp(this.state.name, this.state.password);
   }
 
   nameOnChange = (event) => {
@@ -33,6 +41,7 @@ export default class LoginComponent extends Component {
 
   render = () => {
     const { style = {} } = this.props;
+    console.log(this.props.auth)
 
     return (
       <div style={{ ...styles.container, ...style }}>

@@ -1,10 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react'
-import Button from '@material-ui/core/Button';
-import store from "./redux/store"
-import LoginPageComponent from './components/LoginPage/LoginPageComponent';
+// import { PersistGate } from 'redux-persist/integration/react';
+import store from './redux/store';
+import LoginPage from './components/LoginPage/LoginPage';
 
 if (module.hot) {
   module.hot.accept();
@@ -13,7 +12,7 @@ if (module.hot) {
 const MainApp = () => (
   <Provider store={store().store}>
     {/* <PersistGate persistor={store().persistor} > */}
-    <LoginPageComponent className="loginPage" />
+    <LoginPage className="loginPage" />
     {/* </PersistGate> */}
   </Provider>
 );

@@ -53,10 +53,6 @@ const selectors = {
 /*---------------------------------------*/
 /*          Watchers and Workers         */
 /*---------------------------------------*/
-const watchers = [
-  takeEvery(OAUTH_GET, authenticateWorker),
-];
-
 function* authenticateWorker(action) {
   try {
     const auth = yield select(tokenSelector);
@@ -74,9 +70,10 @@ function* authenticateWorker(action) {
       formData.append('password', action.password);
 
       const result = yield Axios({
-        url: 'http://localhost:3000/auth/token', formData,
+        url: 'http://localhost:3000/oauth/token', formData,
       });
 
+      console.log(result);
       yield put(storeAuth(result.data));
     }
   } catch (e) {
@@ -84,6 +81,10 @@ function* authenticateWorker(action) {
     throw e;
   }
 }
+
+const watchers = [
+  takeEvery(OAUTH_GET, authenticateWorker),
+];
 
 export default {
   actions, reducer, selectors, watchers,
