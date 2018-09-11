@@ -62,15 +62,13 @@ function* authenticateWorker(action) {
       yield put(storeAuth(auth));
     } else {
       console.log('needs token');
-      const formData = new FormData();
-      formData.append('grant_type', 'password');
-      formData.append('client_id', 'app');
-      formData.append('client_secret', 'password'); // todo get from secure place
-      formData.append('username', action.username);
-      formData.append('password', action.password);
 
-      const result = yield Axios({
-        url: 'http://localhost:3000/oauth/token', formData,
+      const result = yield Axios.post('http://localhost:3000/oauth/token', {
+        grant_type: 'password',
+        client_id: 'app',
+        client_secret: 'password',
+        username: action.username,
+        password: action.password,
       });
 
       console.log(result);

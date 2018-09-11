@@ -5,7 +5,7 @@ import styles from './styles';
 export default class LoginPageComponent extends Component {
   render = () => (
     <div style={styles.page}>
-      <center><h1 style={styles.title}>Hailify</h1></center>
+      <center><h1 style={styles.title}>Field Nation</h1></center>
       <Login style={styles.login} />
     </div>
   );

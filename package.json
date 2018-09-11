@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "babel-node ./server/index.js",
+    "start": "babel-node ./server/index.js --inspect-brk",
     "build": "NODE_ENV=production npx parcel build react/app.js -d ./public/js/ --no-cache",
     "dev": "nodemon --exec babel-node ./server/index.js -i ./public",
     "react-dev": "npx parcel watch ./react/app.js -d ./public/js/",
@@ -29,6 +29,7 @@
     "morgan": "^1.9.0",
     "oauth2-server": "^3.0.1",
     "parcel-bundler": "^1.9.7",
+    "prop-types": "^15.6.2",
     "pug": "^2.0.3",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
@@ -50,7 +51,6 @@
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.5.0",
     "nodemon": "^1.18.4",
-    "prop-types": "^15.6.2",
     "react-test-renderer": "^16.5.0"
   }
 }

@@ -7,6 +7,7 @@ import model from './model';
 
 export default (app) => {
   app.all('/oauth/token', (req, res) => {
+    req.headers['content-type'] = 'application/x-www-form-urlencoded';
     const request = new oauthServer.Request(req);
     const response = new oauthServer.Response(res);
 

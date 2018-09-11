@@ -41,8 +41,6 @@ export default class LoginComponent extends Component {
 
   render = () => {
     const { style = {} } = this.props;
-    console.log(this.props.auth)
-
     return (
       <div style={{ ...styles.container, ...style }}>
         <TextField
