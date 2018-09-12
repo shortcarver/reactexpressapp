@@ -4,6 +4,7 @@ import { takeEvery, put, select } from 'redux-saga/effects';
 const OAUTH_GET = 'OAUTH_GET';
 const OAUTH_REMOVE = 'OAUTH_REMOVE';
 const OAUTH_STORE = 'OAUTH_STORE';
+const OAUTH_FAIL = 'OAUTH_FAIL';
 
 /*--------------------------*/
 /*          Actions         */
@@ -14,12 +15,15 @@ const removeOAuth = () => ({ type: OAUTH_REMOVE });
 
 const storeAuth = auth => ({ type: OAUTH_STORE, auth });
 
+const failAuth = error => ({ type: OAUTH_FAIL, error });
+
 const actions = {
   getOAuth,
   removeOAuth,
   OAUTH_STORE,
   OAUTH_REMOVE,
   OAUTH_GET,
+  OAUTH_FAIL,
 };
 
 /*--------------------------*/
@@ -31,9 +35,15 @@ const reducer = (state = {}, action) => {
       return {
         ...state,
         ...action.auth,
+        success: true,
       };
     case OAUTH_REMOVE:
       return {};
+    case OAUTH_FAIL:
+      return {
+        error: action.error,
+        success: false,
+      };
     default:
       return {
         ...state,
@@ -75,8 +85,13 @@ function* authenticateWorker(action) {
       yield put(storeAuth(result.data));
     }
   } catch (e) {
-    console.log(e);
-    throw e;
+    // console.log({ e });
+    if (e.response) {
+      console.log(e.response);
+      yield put(failAuth(e.response));
+    } else {
+      throw e;
+    }
   }
 }
 

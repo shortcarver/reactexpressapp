@@ -10,5 +10,7 @@ export default {
   title: {
   },
   login: {
+    width: 300,
+    margin: 'auto',
   },
 };
