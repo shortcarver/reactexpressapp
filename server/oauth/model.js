@@ -1,3 +1,5 @@
+import userApi from '../users';
+
 class MemoryModel {
   state = {
     tokens: [],
@@ -6,13 +8,6 @@ class MemoryModel {
         id: 'app',
         secret: 'password',
         grants: ['password'],
-      },
-    ],
-    users: [
-      {
-        id: 123,
-        username: 'shorty',
-        password: 'p',
       },
     ],
   }
@@ -37,7 +32,7 @@ class MemoryModel {
 
   getUser = (username, password) => {
     console.log(username, password);
-    return this.state.users.filter(user => user.username === username && user.password === password)[0];
+    return userApi.getByEmail(username).password === user.password;
   }
 
   saveToken = (token, client, user) => {

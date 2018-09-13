@@ -29,7 +29,7 @@ const actions = {
 /*--------------------------*/
 /*          Reducer         */
 /*--------------------------*/
-const reducer = (state = {}, action) => {
+const oAuthReducer = (state = {}, action) => {
   switch (action.type) {
     case OAUTH_STORE:
       return {
@@ -50,6 +50,11 @@ const reducer = (state = {}, action) => {
       };
   }
 };
+
+const reducer = (state = {}, action) => ({
+  ...state,
+  auth: oAuthReducer(state.auth, action),
+});
 
 /*-------------------------------*/
 /*          Selectors            */
