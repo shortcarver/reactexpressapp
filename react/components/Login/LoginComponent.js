@@ -26,7 +26,8 @@ export default class LoginComponent extends Component {
   }
 
   singupOnClick = () => {
-    this.props.signUp(this.state.name, this.state.password);
+    // this.props.signUp(this.state.name, this.state.password);
+    this.props.history.push('/signup');
   }
 
   nameOnChange = (event) => {

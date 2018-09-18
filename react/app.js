@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import store from './redux/store';
 import LoginPage from './components/LoginPage/LoginPage';
 import UserCreatePage from './components/UserCreatePage/UserCreatePage';
+import HomePage from './components/HomePage/HomePage';
 
 if (module.hot) {
   module.hot.accept();
@@ -16,8 +17,8 @@ const MainApp = () => (
     {/* <PersistGate persistor={store().persistor} > */}
     <Router>
       <Switch>
-        <Route exact path="/" component={UserCreatePage} />
-        <Route exact path="/singup" component={LoginPage} />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/singup" component={UserCreatePage} />
         <Route exact path="/login" component={LoginPage} />
       </Switch>
     </Router>
